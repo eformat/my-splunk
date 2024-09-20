@@ -1,0 +1,11 @@
+apiVersion: v2
+name: my-splunk
+description: A Helm chart for Kubernetes
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
+dependencies:
+  - name: mongodb
+    version: 13.18.5
+    repository: https://charts.bitnami.com/bitnami
+ 

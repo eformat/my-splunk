@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-splunk
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: my-splunk
+    server: 'https://kubernetes.default.svc'
+  sources:
+  - repoURL: 'https://eformat.github.io/helm-charts'
+    chart: my-splunk
+    targetRevision: 0.0.1
+    helm:
+      valuesObject:
+        mongodb:
+          containerSecurityContext:
+            runAsUser: 1000920000
+          podSecurityContext:
+            enabled: false
+          architecture: "standalone"
+          auth:
+            replicaSetKey: "password"
+            auth.rootPassword: "password"
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      validate: true
