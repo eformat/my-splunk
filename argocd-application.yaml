@@ -16,7 +16,7 @@ spec:
       valuesObject:
         mongodb:
           containerSecurityContext:
-            runAsUser: 1000920000
+            runAsUser: 1000910000
           podSecurityContext:
             enabled: false
           architecture: "standalone"
